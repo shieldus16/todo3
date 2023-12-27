@@ -1,12 +1,13 @@
+// TodoList.js
 import React from 'react';
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ userId, todos }) => {
   return (
-    <div className="todo-list">
-      <h2>Todo List</h2>
+    <div>
+      <h2>{userId}'s To-Do</h2>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}></li>
+        {todos.map(todo => (
+          <li key={todo.pk}>{todo.fields.todo_content}</li>
         ))}
       </ul>
     </div>

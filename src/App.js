@@ -2,21 +2,22 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Calendar from './components/Calendar';
-import TodoPage from './components/TodoPage';
+import TodoListContainer from './components/TodoListContainer';
 
 const App = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  // const [todos, setTodos] = useState([]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    // fetchTodos(date);
   };
 
   return (
     <Router>
       <Routes>
-        <Route path="/todo-page" element={<TodoPage />} />
+        <Route
+          path="/todo-page"
+          element={<div><TodoListContainer /></div>}
+        />
         <Route
           path="/"
           element={
@@ -29,6 +30,10 @@ const App = () => {
               </div>
             </div>
           }
+        />
+        <Route
+          path="/api/todo/"
+          element={<div><TodoListContainer /></div>}
         />
       </Routes>
     </Router>
