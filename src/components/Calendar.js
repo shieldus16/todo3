@@ -23,11 +23,10 @@ const Calendar = ({ selectedDate, onDateChange }) => {
   }, [currentMonth, currentYear]);
 
   const handleDateClick = (day) => {
-    const newDate = new Date(currentYear, currentMonth, day);
+    const newDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), day);
+    console.log('Selected date:', newDate);
     onDateChange(newDate);
-  
-    // TodoPage로 이동
-    navigate('/todo-page');
+    navigate('/todo-list');
   };
 
   return (

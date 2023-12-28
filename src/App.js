@@ -15,7 +15,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route
-          path="/todo-page"
+          path="/todo-list"
           element={<div><TodoListContainer /></div>}
         />
         <Route
