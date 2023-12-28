@@ -1,4 +1,3 @@
-// calendar.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/Calendar.css';
@@ -23,10 +22,11 @@ const Calendar = ({ selectedDate, onDateChange }) => {
   }, [currentMonth, currentYear]);
 
   const handleDateClick = (day) => {
-    const newDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), day);
-    console.log('Selected date:', newDate);
+    const newDate = new Date(currentYear, currentMonth, day);
     onDateChange(newDate);
-    navigate('/todo-list');
+
+    // TodoList로 이동 및 클릭한 날짜 정보 전달
+    navigate(`/todo-list`, { state: { date: newDate } });
   };
 
   return (

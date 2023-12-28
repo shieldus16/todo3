@@ -1,8 +1,16 @@
 // App.js
+
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Calendar from './components/Calendar';
-import TodoListContainer from './components/TodoListContainer';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import TodoList from './components/TodoList';
+import TodoPage from './components/TodoPage';
+import UserTodoPage from './components/UserTodoPage';
+import axios from 'axios';
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 const App = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -16,7 +24,8 @@ const App = () => {
       <Routes>
         <Route
           path="/todo-list"
-          element={<div><TodoListContainer /></div>}
+          //element={<div><TodoListContainer /></div>}
+          element={<div><TodoList /></div>}
         />
         <Route
           path="/"
@@ -33,8 +42,13 @@ const App = () => {
         />
         <Route
           path="/api/todo/"
-          element={<div><TodoListContainer /></div>}
+          //element={<div><TodoListContainer /></div>}
+          element={<div><TodoList /></div>}
         />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/todo-page" element={<TodoPage />} />
+        <Route path="/user-todo/:userId" element={<UserTodoPage />} />
       </Routes>
     </Router>
   );
